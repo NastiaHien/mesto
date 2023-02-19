@@ -14,14 +14,14 @@ const closeProfileButton = document.querySelector(".popup__button-close"); //н�
 
 // отображает форму на странице, в поля формы по умолчанию назначает данные указанные в профиле
 function openPopup(popup) {
-  popup.classList.remove("popup__close");
+  popup.classList.remove("popup_close");
   userNameInput.value = userNameElement.textContent;
   OccupationInput.value = userOccupationElement.textContent;
 }
 
 // функция скрывает форму
 function closePopup(popup) {
-  popup.classList.add("popup__close");
+  popup.classList.add("popup_close");
 }
 
 // функция задает данные профиля через форму

@@ -18,12 +18,12 @@
     <main>
         <section class="profile">
             <div class="profile__items">
-                <img class="profile__avatar" src="./image/profile-photojpg.jpg" alt="Аватарка." />
+                <img class="profile__avatar" src="./image/profile-photojpg.jpg" alt="Profile photo." />
                 <div class="profile__info">
                     <div class="profile__content">
                         <h1 class="profile__user-name">J-M Basquiat</h1>
                         <button class="profile__edit-button" type="button">
-                            <span class="sr-only">Редактировать</span>
+                            <span class="sr-only">Edit</span>
                         </button>
                     </div>
                     <p class="profile__user-occupation">Artist, New-York</p>
@@ -32,93 +32,93 @@
             <button class="profile__add-button" type="button"></button>
         </section>
 
-        <section class="gallery" aria-label="Галерея.">
+        <section class="gallery" aria-label="Photo-gallery.">
             <article class="gallery__card">
-                <img class="gallery__image" src="./image/Гленн.jpg" alt="Гленн." />
+                <img class="gallery__image" src="./image/Гленн.jpg" alt="Glenn." />
                 <div class="gallery__card-items">
                     <h3 class="gallery__title">Glenn, 1985</h3>
                     <div class="gallery__button-conteiner">
                         <button class="gallery__button gallery__button_active" type="button">
-                            <span class="sr-only">Лайк</span>
+                            <span class="sr-only">like</span>
                         </button>
                     </div>
                 </div>
             </article>
 
             <article class="gallery__card">
-                <img class="gallery__image" src="./image/Красный человек.png" alt="Красный человек." />
+                <img class="gallery__image" src="./image/Красный человек.png" alt="Red man." />
                 <div class="gallery__card-items">
                     <h3 class="gallery__title">Red man, 1981</h3>
                     <div class="gallery__button-conteiner">
                         <button class="gallery__button gallery__button_active" type="button">
-                            <span class="sr-only">Лайк</span>
+                            <span class="sr-only">like</span>
                         </button>
                     </div>
                 </div>
             </article>
 
             <article class="gallery__card">
-                <img class="gallery__image" src="./image/две головы.png" alt="Две головы." />
+                <img class="gallery__image" src="./image/две головы.png" alt="Two heads." />
                 <div class="gallery__card-items">
                     <h3 class="gallery__title">Two heads, 1982</h3>
                     <div class="gallery__button-conteiner">
                         <button class="gallery__button gallery__button_active" type="button">
-                            <span class="sr-only">Лайк</span>
+                            <span class="sr-only">like</span>
                         </button>
                     </div>
                 </div>
             </article>
 
             <article class="gallery__card">
-                <img class="gallery__image" src="./image/in-italian.jpg!Large (1).jpg" alt="В Италии." />
+                <img class="gallery__image" src="./image/in-italian.jpg!Large (1).jpg" alt="In Italian." />
                 <div class="gallery__card-items">
                     <h3 class="gallery__title">In Italian, 1983</h3>
                     <div class="gallery__button-conteiner">
                         <button class="gallery__button gallery__button_active" type="button">
-                            <span class="sr-only">Лайк</span>
+                            <span class="sr-only">like</span>
                         </button>
                     </div>
                 </div>
             </article>
 
             <article class="gallery__card">
-                <img class="gallery__image" src="./image/Рыбалка.png" alt="Рыбалка." />
+                <img class="gallery__image" src="./image/Рыбалка.png" alt="Fishing." />
                 <div class="gallery__card-items">
                     <h3 class="gallery__title">Fishing, 1981</h3>
                     <div class="gallery__button-conteiner">
                         <button class="gallery__button gallery__button_active" type="button">
-                            <span class="sr-only">Лайк</span>
+                            <span class="sr-only">like</span>
                         </button>
                     </div>
                 </div>
             </article>
 
             <article class="gallery__card">
-                <img class="gallery__image" src="./image/верхом на смерти.png" alt="Верхом на смерти." />
+                <img class="gallery__image" src="./image/верхом на смерти.png" alt="Riding with Death." />
                 <div class="gallery__card-items">
                     <h3 class="gallery__title">Riding with Death, 1988</h3>
                     <div class="gallery__button-conteiner">
                         <button class="gallery__button gallery__button_active" type="button">
-                            <span class="sr-only">Лайк</span>
+                            <span class="sr-only">like</span>
                         </button>
                     </div>
                 </div>
             </article>
         </section>
+        <section class="popup popup_close" aria-label="Popup">
+            <div class="popup__conteiner">
+                <button type="button" class="popup__button-close">
+                    <span class="sr-only">Close form</span>
+                </button>
+                <form action="#" class="popup__form" method="post">
+                    <p class="popup__title">Edit profile</p>
+                    <input id="user-name" class="popup__input popup__input_user-name" type="text" name="name"
+                        placeholder="Ваше имя" required />
+                    <input id="user-occupation" class="popup__input popup__input_user-occupation" type="text"
+                        placeholder="О себе" required />
+                    <button type="submit" class="popup__submit-button">Save</button>
+                </form>
     </main>
-    <section class="popup popup__close">
-        <div class="popup__conteiner">
-            <button type="button" class="popup__button-close">
-                <span class="sr-only">Закрыть форму</span>
-            </button>
-            <form action="#" class="popup__form" method="post">
-                <p class="popup__title">Редактировать профиль</p>
-                <input id="user-name" class="popup__input popup__input_user-name" type="text" name="name"
-                    placeholder="Ваше имя" required />
-                <input id="user-occupation" class="popup__input popup__input_user-occupation" type="text"
-                    placeholder="О себе" required />
-                <button type="submit" class="popup__submit-button">Сохранить</button>
-            </form>
         </div>
     </section>
     <footer class="footer">
