@@ -1,7 +1,7 @@
 .profile__add-button {
     margin: 0;
     padding: 0;
-    background-image: url(../../../image/add-plus.svg);
+    background-image: url(../../../images/add_plus.svg);
     background-repeat: no-repeat;
     background-position: center;
     border: 2px solid #fff;
@@ -12,7 +12,8 @@
     color: inherit;
     background-color: transparent;
     transition: .2s ease-out;
-
+    border-radius: 2px;
+    
 
 }
 
@@ -21,11 +22,18 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 960px) {
     .profile__add-button {
         margin-top: 36px;
         width: 282px;
 
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .profile__add-button {
+        margin-top: 32px;
 
     }
+
 }

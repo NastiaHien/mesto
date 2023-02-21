@@ -4,7 +4,6 @@
 @import url(../blocks/header/header.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/sr-only/sr-only.css);
 @import url(../blocks/gallery/gallery.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/header/__logo/header__logo.css);
@@ -23,7 +22,7 @@
 @import url(../blocks/gallery/__title/gallery__title.css);
 @import url(../blocks/gallery/__button/gallery__button.css);
 @import url(../blocks/gallery/__button/_active/gallery__button_active.css);
-@import url(../blocks/popup/_close/popup_close.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__input/popup__input.css);

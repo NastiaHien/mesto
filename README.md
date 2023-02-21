@@ -4,7 +4,7 @@
 ###Проект: Место
 
 
-[сайт mesto](https://nastiahien.github.io/russian-travel/index.html)
+[сайт mesto](https://nastiahien.github.io/mesto/index)
 
 
 #####Одностраничный сайт c адаптивной версткой и применением базовых функций по Javascript.
