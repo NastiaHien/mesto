@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     background-image: url(../../../images/add_plus.svg);
+    background-size: 22px;
     background-repeat: no-repeat;
     background-position: center;
     border: 2px solid #fff;
@@ -32,6 +33,7 @@
 
 @media screen and (max-width: 450px) {
     .profile__add-button {
+        background-size: 16px;
         margin-top: 32px;
 
     }

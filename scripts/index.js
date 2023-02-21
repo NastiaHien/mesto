@@ -21,6 +21,14 @@ function closePopup() {
   editProfile.classList.remove('popup_opened');
 };
 
+// функция задает данные профиля через форму и закрывает форму
+function handleFormSubmit(evt) {
+  evt.preventDefault();
+  userNameElement.textContent = userNameInput.value;
+  userOccupationElement.textContent = occupationInput.value;
+  closePopup();
+};
+
 // создает событие, при нажатии на кнопку редактировать открывается форма
 editProfileButton.addEventListener('click', function () {
   openPopup();
@@ -30,14 +38,6 @@ editProfileButton.addEventListener('click', function () {
 closeProfileButton.addEventListener('click', function () {
   closePopup();
 });
-
-// функция задает данные профиля через форму и закрывает форму
-function handleFormSubmit(evt) {
-  evt.preventDefault();
-  userNameElement.textContent = userNameInput.value;
-  userOccupationElement.textContent = occupationInput.value;
-  closePopup();
-};
 
 //создает событие, данные введеные в форме, сохраняются в профиле и закрываются
 formElement.addEventListener('submit', handleFormSubmit);
