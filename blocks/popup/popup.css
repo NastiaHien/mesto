@@ -8,6 +8,9 @@
     justify-content: center;
     background: rgba(0, 0, 0, .5);
     position: fixed;
-    visibility: hidden;
+    visibility: hidden; 
+    opacity: 0;
+    transition: visibility .3s linear, opacity .3s linear;
+    
     
 }

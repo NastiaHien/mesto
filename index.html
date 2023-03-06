@@ -31,65 +31,26 @@
         </section>
 
         <section class="gallery" aria-label="Фото-галерея.">
-            <article class="gallery__card">
-                <img class="gallery__image" src="./images/glenn.jpg" alt="Гленн." />
-                <div class="gallery__card-items">
-                    <h2 class="gallery__title">Glenn, 1985</h2>
-                    <button class="gallery__button gallery__button_active" type="button" aria-label="Лайк.">
-                    </button>
-                </div>
-            </article>
-
-            <article class="gallery__card">
-                <img class="gallery__image" src="./images/red_man.png" alt="Красный человек." />
-                <div class="gallery__card-items">
-                    <h2 class="gallery__title">Red man, 1981</h2>
-                    <button class="gallery__button gallery__button_active" type="button" aria-label="Лайк.">
-                    </button>
-                </div>
-            </article>
-
-            <article class="gallery__card">
-                <img class="gallery__image" src="./images/two_head.png" alt="Две головы." />
-                <div class="gallery__card-items">
-                    <h2 class="gallery__title">Two heads, 1982</h2>
-                    <button class="gallery__button gallery__button_active" type="button" aria-label="Лайк.">
-                    </button>
-                </div>
-            </article>
-
-            <article class="gallery__card">
-                <img class="gallery__image" src="./images/in-italian.jpg" alt="В Италии." />
-                <div class="gallery__card-items">
-                    <h2 class="gallery__title">In Italian, 1983</h2>
-                    <button class="gallery__button gallery__button_active" type="button" aria-label="Лайк.">
-                    </button>
-                </div>
-            </article>
-
-            <article class="gallery__card">
-                <img class="gallery__image" src="./images/fishing.png" alt="Рыбалка." />
-                <div class="gallery__card-items">
-                    <h2 class="gallery__title">Fishing, 1981</h2>
-                    <button class="gallery__button gallery__button_active" type="button" aria-label="Лайк.">
-                    </button>
-                </div>
-            </article>
-
-            <article class="gallery__card">
-                <img class="gallery__image" src="./images/riding.png" alt="Верхом на смерти." />
-                <div class="gallery__card-items">
-                    <h2 class="gallery__title">Riding with Death, 1988</h2>
-                    <button class="gallery__button gallery__button_active" type="button" aria-label="Лайк.">
-                    </button>
-                </div>
-            </article>
+            <template id="card-template">
+                <article class="gallery__card">
+                    <div class="gallery__card-image">
+                    <img class="gallery__image" src="#" alt="" />
+                    <button class="gallery__bin-button" type="button" aria-label="Урна.">
+                    </div>
+                    <div class="gallery__card-items">
+                        <h2 class="gallery__title"></h2>
+                        <button class="gallery__button-like" type="button" aria-label="Лайк.">
+                        </button>
+                    </div>
+                </article>
+            </template>
+            
         </section>
-        <section class="popup" aria-label="Popup">
+        <section class="popup popup__profile-edit" aria-label="Попап редактор профиля.">
             <div class="popup__container">
-                <button type="button" class="popup__button-close" aria-label="Кнопка закрыть форму">
+                <button type="button" class="popup__button-close popup__button-close-profile" aria-label="Кнопка закрыть форму">
                 </button>
-                <form action="#" class="popup__form" method="post" name="edit-profile">
+                <form action="#" class="popup__form popup__form-profile" method="post" name="edit-profile">
                     <h2 class="popup__title">Редактировать профиль</h2>
                     <input id="user-name" class="popup__input popup__input_user_name" type="text" name="username"
                         placeholder="Ваше имя" required />
@@ -99,6 +60,28 @@
                 </form>
             </div>
         </section>
+            <section class="popup popup__add-photo" aria-label="Попап добавления карточки.">
+                <div class="popup__container">
+                    <button type="button" class="popup__button-close popup__button-close-add" aria-label="Кнопка закрыть форму">
+                    </button>
+                    <form action="#" class="popup__form popup__form-card" method="post" name="add-photo">
+                        <h2 class="popup__title">Новое место</h2>
+                        <input id="user-name" class="popup__input popup__input_image_name" type="text" name="imagename"
+                            placeholder="Название" required />
+                        <input id="user-occupation" class="popup__input popup__input_image_link" type="text" name="imagelink"
+                            placeholder="Ссылка на картинку" required />
+                        <button type="submit" class="popup__submit-button">Создать</button>
+                    </form>
+                </div>
+            </section>
+            <section class="popup popup__zoom-items" aria-label="Попап зумирования карточки.">
+                <figure class="popup__zoom-container">
+                    <img class="popup__zoom-image" src="#" alt="" />
+                    <figcaption class="popup__zoom-title"></figcaption>
+                    <button type="button" class="popup__button-close popup__button-close-zoom-photo" aria-label="Кнопка закрыть форму">
+                    </button>
+                </figure>
+            </section>
     </main>
 
     <footer class="footer">

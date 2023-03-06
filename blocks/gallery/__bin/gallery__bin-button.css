@@ -1,0 +1,24 @@
+.gallery__bin-button {
+    padding: 0;
+    background-image: url(../../../images/waste.svg);
+    background-repeat: no-repeat;
+    font: inherit;
+    color: inherit;
+    width: 18px;
+    height: 19px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    opacity: 1;
+    transition: 0.2s ease-out;
+}
+
+.gallery__bin-button:hover {
+    opacity: 0.6;
+    cursor: pointer;
+
+}
+

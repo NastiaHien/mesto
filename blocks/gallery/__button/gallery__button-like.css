@@ -1,4 +1,4 @@
-.gallery__button {
+.gallery__button-like {
     padding: 0;
     background-image: url(../../../images/like.svg);
     width: 22px;
@@ -12,7 +12,7 @@
     transition: 0.2s ease-out;
   }
   
-  .gallery__button:hover {
+  .gallery__button-like:hover {
     opacity: 0.5;
     cursor: pointer;
   }
