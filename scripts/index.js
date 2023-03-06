@@ -1,6 +1,7 @@
 //  попапы
-const editProfilePopup = document.querySelector(".popup__profile-edit"); // попап-редактор профиля
-const addPhotoPopup = document.querySelector(".popup__add-photo"); // попап-добавить карточку
+const editProfilePopup = document.querySelector('.popup_profile-edit'); // попап-редактор профиля
+const addPhotoPopup = document.querySelector('.popup_add-photo') // попап-добавить карточку
+
 
 //  кнопки
 const editProfileButton = document.querySelector(".profile__edit-button"); //  кнопка "редактировать профиль"
@@ -184,7 +185,8 @@ cardsContainer.addEventListener("click", function (evt) {
 });
 
 // Zoom
-const zoomPhotoPopup = document.querySelector(".popup__zoom-items");
+const zoomPhotoPopup = document.querySelector(".popup_zoom-items");
+console.log(zoomPhotoPopup);
 const zoomImage = document.querySelector(".popup__zoom-image");
 const zoomTitle = document.querySelector(".popup__zoom-title");
 
