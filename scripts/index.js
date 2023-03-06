@@ -151,7 +151,7 @@ function handleFormSubmitCard(evt) {
   const newCard = {
     title: titleValue,
     image: imageValue,
-    alt: "A new image",
+    alt: titleValue,
   };
 
   photoCards.push(newCard);

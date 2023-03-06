@@ -36,6 +36,7 @@
                     <div class="gallery__card-image">
                     <img class="gallery__image" src="#" alt="" />
                     <button class="gallery__bin-button" type="button" aria-label="Урна.">
+                    </button>
                     </div>
                     <div class="gallery__card-items">
                         <h2 class="gallery__title"></h2>
@@ -52,9 +53,9 @@
                 </button>
                 <form action="#" class="popup__form popup__form-profile" method="post" name="edit-profile">
                     <h2 class="popup__title">Редактировать профиль</h2>
-                    <input id="user-name" class="popup__input popup__input_user_name" type="text" name="username"
+                    <input id="name" class="popup__input popup__input_user_name" type="text" name="username"
                         placeholder="Ваше имя" required />
-                    <input id="user-occupation" class="popup__input popup__input_user_occupation" type="text" name="job"
+                    <input id="occupation" class="popup__input popup__input_user_occupation" type="text" name="job"
                         placeholder="О себе" required />
                     <button type="submit" class="popup__submit-button">Сохранить</button>
                 </form>
@@ -75,12 +76,12 @@
                 </div>
             </section>
             <section class="popup popup__zoom-items" aria-label="Попап зумирования карточки.">
-                <figure class="popup__zoom-container">
+                <div class="popup__zoom-container">
                     <img class="popup__zoom-image" src="#" alt="" />
-                    <figcaption class="popup__zoom-title"></figcaption>
+                    <p class="popup__zoom-title"></p>
                     <button type="button" class="popup__button-close popup__button-close-zoom-photo" aria-label="Кнопка закрыть форму">
                     </button>
-                </figure>
+                </div>
             </section>
     </main>
 
