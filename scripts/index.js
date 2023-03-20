@@ -1,7 +1,9 @@
+import { photoCards } from "./cards.js";
+
 //  попапы
-const popups = document.querySelectorAll('.popup'); // секция попап
-const editProfilePopup = document.querySelector('.popup_profile-edit'); // попап-редактор профиля
-const addPhotoPopup = document.querySelector('.popup_add-photo') // попап-добавить карточку
+const popups = document.querySelectorAll(".popup"); // секция попап
+const editProfilePopup = document.querySelector(".popup_profile-edit"); // попап-редактор профиля
+const addPhotoPopup = document.querySelector(".popup_add-photo"); // попап-добавить карточку
 
 //  кнопки
 const editProfileButton = document.querySelector(".profile__edit-button"); //  кнопка "редактировать профиль"
@@ -10,7 +12,7 @@ const closeProfileButton = editProfilePopup.querySelector(".popup__button-close-
 const closeAddPhotoButton = addPhotoPopup.querySelector(".popup__button-close-add"); // кнопка закрытия формы "добавить карточку"
 
 // формы для ввода
-const formElementProfile = editProfilePopup.querySelector(".popup__form-profile"); //  форма "редактировать профиль"
+const elementFormProfile = editProfilePopup.querySelector(".popup__form-profile"); //  форма "редактировать профиль"
 
 //  имя пользователя и профессия на странице профиля
 const userNameElement = document.querySelector(".profile__user-name"); // имя пользователя
@@ -19,8 +21,6 @@ const userOccupationElement = document.querySelector(".profile__user-occupation"
 // поля форм для ввода
 const userNameInput = editProfilePopup.querySelector(".popup__input_user_name"); // поле ввода имени
 const occupationInput = editProfilePopup.querySelector(".popup__input_user_occupation"); //поле ввода информации о пользователе
-
-
 
 // функция открывает попап и добавляет обработчик события для Escape
 function openPopup(popupElement) {
@@ -45,24 +45,13 @@ function handleEscapeKey(evt) {
 }
 
 // закрывает открытый попап по клику на бэкраунд зону
-popups.forEach(popup => {
-  popup.addEventListener('click', (event) => {
+popups.forEach((popup) => {
+  popup.addEventListener("click", (event) => {
     if (event.target === popup) {
-      popup.classList.remove('popup_opened');
+      popup.classList.remove("popup_opened");
     }
   });
 });
-
-// добавляет глобальный обработчик событий для нажатия клавиши "Escape"
-document.addEventListener("keydown", function(evt) {
-  if (evt.key === "Escape") {
-    const openedPopup = document.querySelector(".popup_opened");
-    if (openedPopup) {
-      closePopup(openedPopup);
-    }
-  }
-});
-
 
 // EDIT PROFILE BLOCK
 //Отображает форму редактирования профиля, в поля формы по умолчанию назначает данные указанные в профиле
@@ -73,7 +62,7 @@ function openProfilePopup() {
 }
 
 // функция задает данные профиля через форму и закрывает форму
-function FormSubmitProfile(evt) {
+function submitFormProfile(evt) {
   evt.preventDefault();
   userNameElement.textContent = userNameInput.value;
   userOccupationElement.textContent = occupationInput.value;
@@ -91,12 +80,10 @@ closeProfileButton.addEventListener("click", function () {
 });
 
 // данные введеные в форме "редактировать профиль" , сохраняются в профиле и закрываются
-formElementProfile.addEventListener("submit", FormSubmitProfile);
+elementFormProfile.addEventListener("submit", submitFormProfile);
 
 // закрывает открытый popup нажатием на клавишу Escape
 document.addEventListener("keydown", handleEscapeKey);
-
-
 
 // ADD PHOTOCARD ELEMENT BLOCK
 
@@ -110,59 +97,49 @@ closeAddPhotoButton.addEventListener("click", function () {
   closePopup(addPhotoPopup);
 });
 
-//Массив изображений с заголовком
-const photoCards = [
-  {
-    title: "National Park, Australia",
-    image: "https://images.unsplash.com/photo-1548296404-93c7694b2f91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-    // alt: "National Park, Australia",
-  },
-  {
-    title: "San Francisco, CA, USA",
-    image: "https://images.unsplash.com/photo-1677629322752-7045c2c04b5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
-    // alt: "San Francisco, CA, USA",
-  },
-  {
-    title: "New York, Brooklyn",
-    image: "https://images.unsplash.com/photo-1522083165195-3424ed129620?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1297&q=80",
-    // alt: "New York, Brooklyn",
-  },
-  {
-    title: "Toronto, Canada",
-    image: "https://images.unsplash.com/photo-1588733103629-b77afe0425ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    // alt: "Toronto, Canada",
-  },
-  {
-    title: "Seoul, South Korea",
-    image: "https://images.unsplash.com/photo-1562829612-55b71f529a49?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
-    // alt: "Seoul, South Korea",
-  },
-  {
-    title: "Los Angeles, CA, USA",
-    image: "https://images.unsplash.com/photo-1647963945830-6c5e1c043f76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1382&q=80",
-    // alt: "Los Angeles, CA, USA",
-  },
-];
-
-const cardsContainer = document.querySelector(".gallery");
-
+// Функция создания новой карточки в галереи
 function createCard(card) {
   const cardTemplate = document.querySelector("#card-template").content.cloneNode(true);
   const cardImage = cardTemplate.querySelector(".gallery__image");
   const cardTitle = cardTemplate.querySelector(".gallery__title");
+  const likeButton = cardTemplate.querySelector(".gallery__button-like");
+  const deleteButton = cardTemplate.querySelector(".gallery__bin-button");
 
+  // устанавливает свойство элемента карты и описания
   cardImage.setAttribute("src", card.image);
   cardImage.setAttribute("alt", card.alt);
   cardTitle.textContent = card.title;
 
+  // обработчики события "like", "delete card", "zoom card"
+  likeButton.addEventListener("click", function (evt) {
+    evt.target.classList.toggle("gallery__button-like_active");
+  });
+
+  deleteButton.addEventListener("click", function (evt) {
+    evt.target.closest(".gallery__card").remove();
+  });
+
+  cardImage.addEventListener("click", function (evt) {
+    const cardTitle = evt.target.closest(".gallery__card").querySelector(".gallery__title").textContent;
+    const cardAlt = evt.target.getAttribute("alt");
+    zoomImage.setAttribute("src", evt.target.src);
+    zoomImage.setAttribute("alt", cardAlt);
+    zoomTitle.textContent = cardTitle;
+    openPopup(zoomPhotoPopup);
+  });
+
   return cardTemplate;
 }
 
+// функция добавляет карточку в контейнер галереи
 function renderCard(card, cardsContainer) {
   const cardTemplate = createCard(card);
   cardsContainer.prepend(cardTemplate);
 }
 
+const cardsContainer = document.querySelector(".gallery");
+
+// перебирает массив и добавляет каждую карточку в контейнер
 photoCards.forEach((card) => {
   const cardElement = createCard(card);
   cardsContainer.appendChild(cardElement);
@@ -173,7 +150,13 @@ const formAddCard = document.querySelector(".popup__form-card");
 const nameImageElement = formAddCard.querySelector(".popup__input_image_name");
 const linkImageElement = formAddCard.querySelector(".popup__input_image_link");
 
-// Функция отправки формы 
+// функция деактивации кнопки
+function disableSubmitButton() {
+  const submitButton = formAddCard.querySelector(".popup__submit-button");
+  submitButton.classList.add("popup__submit-button_disabled");
+  submitButton.disabled = true;
+}
+
 function handleFormSubmitCard(evt) {
   evt.preventDefault();
 
@@ -193,43 +176,20 @@ function handleFormSubmitCard(evt) {
 
   // Сбрасывает форму
   formAddCard.reset();
+  disableSubmitButton();
   closePopup(addPhotoPopup);
 }
 
 // Добавляет слушатели в форму
 formAddCard.addEventListener("submit", handleFormSubmitCard);
 
-cardsContainer.addEventListener("click", function (evt) {
-
-  // добавление кнопки "лайк"
-  if (evt.target.classList.contains("gallery__button-like")) {
-    evt.target.classList.toggle("gallery__button-like_active");
-  } 
-  
-  // кнопка удаления карточки 
-  else if (evt.target.classList.contains("gallery__bin-button")) {
-    evt.target.closest(".gallery__card").remove();
-  } 
-  
-  else if (evt.target.classList.contains("gallery__image")) {
-    const cardTitle = evt.target.closest(".gallery__card").querySelector(".gallery__title").textContent;
-    const cardAlt = evt.target.getAttribute("alt");
-    zoomImage.setAttribute("src", evt.target.src);
-    zoomImage.setAttribute("alt", cardAlt);
-    zoomTitle.textContent = cardTitle;
-    openPopup(zoomPhotoPopup);
-  }
-});
-
 // Zoom
 const zoomPhotoPopup = document.querySelector(".popup_zoom-items");
 const zoomImage = document.querySelector(".popup__zoom-image");
 const zoomTitle = document.querySelector(".popup__zoom-title");
-
 
 const closeZoomButton = zoomPhotoPopup.querySelector(".popup__button-close-zoom-photo");
 
 closeZoomButton.addEventListener("click", function () {
   closePopup(zoomPhotoPopup);
 });
-
