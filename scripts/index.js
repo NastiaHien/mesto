@@ -1,7 +1,7 @@
 //  попапы
+const popups = document.querySelectorAll('.popup'); // секция попап
 const editProfilePopup = document.querySelector('.popup_profile-edit'); // попап-редактор профиля
 const addPhotoPopup = document.querySelector('.popup_add-photo') // попап-добавить карточку
-
 
 //  кнопки
 const editProfileButton = document.querySelector(".profile__edit-button"); //  кнопка "редактировать профиль"
@@ -21,13 +21,48 @@ const userNameInput = editProfilePopup.querySelector(".popup__input_user_name");
 const occupationInput = editProfilePopup.querySelector(".popup__input_user_occupation"); //поле ввода информации о пользователе
 
 
+
+// функция открывает попап и добавляет обработчик события для Escape
 function openPopup(popupElement) {
   popupElement.classList.add("popup_opened");
+  document.addEventListener("keydown", handleEscapeKey);
 }
 
+// функция закрывает попап и удаляет обработчик события с Escape
 function closePopup(popupElement) {
   popupElement.classList.remove("popup_opened");
+  document.removeEventListener("keydown", handleEscapeKey);
 }
+
+// по нажатию клавиши Escape закрывает текущий открытый попап
+function handleEscapeKey(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+    if (openedPopup) {
+      closePopup(openedPopup);
+    }
+  }
+}
+
+// закрывает открытый попап по клику на бэкраунд зону
+popups.forEach(popup => {
+  popup.addEventListener('click', (event) => {
+    if (event.target === popup) {
+      popup.classList.remove('popup_opened');
+    }
+  });
+});
+
+// добавляет глобальный обработчик событий для нажатия клавиши "Escape"
+document.addEventListener("keydown", function(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+    if (openedPopup) {
+      closePopup(openedPopup);
+    }
+  }
+});
+
 
 // EDIT PROFILE BLOCK
 //Отображает форму редактирования профиля, в поля формы по умолчанию назначает данные указанные в профиле
@@ -57,6 +92,9 @@ closeProfileButton.addEventListener("click", function () {
 
 // данные введеные в форме "редактировать профиль" , сохраняются в профиле и закрываются
 formElementProfile.addEventListener("submit", FormSubmitProfile);
+
+// закрывает открытый popup нажатием на клавишу Escape
+document.addEventListener("keydown", handleEscapeKey);
 
 
 
