@@ -1,4 +1,5 @@
 import { photoCards } from "./cards.js";
+import { toggleButtonState, resetValidation, inactiveButtonClass, inputErrorClass, errorClass } from "./validate.js";
 
 //  попапы
 const popups = document.querySelectorAll(".popup"); // секция попап
@@ -10,9 +11,11 @@ const editProfileButton = document.querySelector(".profile__edit-button"); //  �
 const addPhotoButton = document.querySelector(".profile__add-button"); //  кнопка "добавить карточку"
 const closeProfileButton = editProfilePopup.querySelector(".popup__button-close-profile"); // кнопка закрытия формы "редактировать профиль"
 const closeAddPhotoButton = addPhotoPopup.querySelector(".popup__button-close-add"); // кнопка закрытия формы "добавить карточку"
+const submitButtonClass = ".popup__submit-button"; //кнопка сохранить
 
 // формы для ввода
 const elementFormProfile = editProfilePopup.querySelector(".popup__form-profile"); //  форма "редактировать профиль"
+const formAddCard = document.querySelector(".popup__form-card"); // форма "добавить новую карточку"
 
 //  имя пользователя и профессия на странице профиля
 const userNameElement = document.querySelector(".profile__user-name"); // имя пользователя
@@ -21,6 +24,8 @@ const userOccupationElement = document.querySelector(".profile__user-occupation"
 // поля форм для ввода
 const userNameInput = editProfilePopup.querySelector(".popup__input_user_name"); // поле ввода имени
 const occupationInput = editProfilePopup.querySelector(".popup__input_user_occupation"); //поле ввода информации о пользователе
+const nameImageElement = formAddCard.querySelector(".popup__input_image_name"); // поле ввода названия карточки
+const linkImageElement = formAddCard.querySelector(".popup__input_image_link"); // поле ввода ссылки на карточку
 
 // функция открывает попап и добавляет обработчик события для Escape
 function openPopup(popupElement) {
@@ -55,10 +60,14 @@ popups.forEach((popup) => {
 
 // EDIT PROFILE BLOCK
 //Отображает форму редактирования профиля, в поля формы по умолчанию назначает данные указанные в профиле
+const submitButtonProfile = editProfilePopup.querySelector(submitButtonClass);
+
 function openProfilePopup() {
+  resetValidation(editProfilePopup, ".popup__input", inputErrorClass, errorClass);
   openPopup(editProfilePopup);
   userNameInput.value = userNameElement.textContent;
   occupationInput.value = userOccupationElement.textContent;
+  toggleButtonState([userNameInput, occupationInput], submitButtonProfile, inactiveButtonClass);
 }
 
 // функция задает данные профиля через форму и закрывает форму
@@ -82,13 +91,12 @@ closeProfileButton.addEventListener("click", function () {
 // данные введеные в форме "редактировать профиль" , сохраняются в профиле и закрываются
 elementFormProfile.addEventListener("submit", submitFormProfile);
 
-// закрывает открытый popup нажатием на клавишу Escape
-document.addEventListener("keydown", handleEscapeKey);
-
 // ADD PHOTOCARD ELEMENT BLOCK
 
-// при нажатии на кнопку добавить открывется форма "добавить фото"
+// при нажатии на кнопку добавить открывется форма "добавить фото" с пустыми полями ввода и неактивной кнопкой
 addPhotoButton.addEventListener("click", function () {
+  formAddCard.reset();
+  resetValidation(addPhotoPopup, ".popup__input", inputErrorClass, errorClass);
   openPopup(addPhotoPopup);
 });
 
@@ -145,38 +153,22 @@ photoCards.forEach((card) => {
   cardsContainer.appendChild(cardElement);
 });
 
-// поля переменных элемента формы
-const formAddCard = document.querySelector(".popup__form-card");
-const nameImageElement = formAddCard.querySelector(".popup__input_image_name");
-const linkImageElement = formAddCard.querySelector(".popup__input_image_link");
-
-// функция деактивации кнопки
-function disableSubmitButton() {
-  const submitButton = formAddCard.querySelector(".popup__submit-button");
-  submitButton.classList.add("popup__submit-button_disabled");
-  submitButton.disabled = true;
-}
+const submitButtonCard = formAddCard.querySelector(submitButtonClass);
 
 function handleFormSubmitCard(evt) {
   evt.preventDefault();
 
-  // Получает значение вводимых элементов в поля формы
   const titleValue = nameImageElement.value;
   const imageValue = linkImageElement.value;
 
-  // Создает новую карточку объекта и добавляет в массив
   const newCard = {
     title: titleValue,
     image: imageValue,
     alt: titleValue,
   };
 
-  // Отображает новую карточку в контейнере галереи
   renderCard(newCard, cardsContainer);
 
-  // Сбрасывает форму
-  formAddCard.reset();
-  disableSubmitButton();
   closePopup(addPhotoPopup);
 }
 

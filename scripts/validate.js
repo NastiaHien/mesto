@@ -9,7 +9,7 @@ enableValidation({
 });
 
 //Функция переключает активность submit(кнопки) на основе валидности полей ввода
-function toggleButtonState(inputs, submitButton, inactiveButtonClass) {
+export function toggleButtonState(inputs, submitButton, inactiveButtonClass) {
   const hasInvalidInput = inputs.some((input) => !input.validity.valid);
   if (hasInvalidInput) {
     submitButton.classList.add(inactiveButtonClass);
@@ -45,6 +45,22 @@ function checkInputValidity(formElement, inputElement, inputErrorClass, errorCla
   }
 }
 
+export function resetValidation(formElement, inputSelector, inputErrorClass, errorClass) {
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+  const errorList = Array.from(formElement.querySelectorAll(`.${errorClass}`));
+
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, inputErrorClass, errorClass);
+  });
+
+  errorList.forEach((errorElement) => {
+    errorElement.textContent = "";
+    errorElement.classList.remove(errorClass);
+  });
+
+  toggleButtonState(inputList, formElement.querySelector(".popup__submit-button"), inactiveButtonClass);
+}
+
 // Функция добавляет прослушиватель событий для каждого поля ввода и отправки формы
 function setEventListeners(formElement, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass) {
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
@@ -72,3 +88,8 @@ function enableValidation({ formSelector, inputSelector, submitButtonSelector, i
     setEventListeners(formElement, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass);
   });
 }
+
+// экспорт переменных 
+export const inactiveButtonClass = "popup__submit-button_disabled";
+export const inputErrorClass = "popup__input_type-error";
+export const errorClass = "popup__error_visible";

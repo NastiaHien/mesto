@@ -2,16 +2,16 @@
   margin: auto;
   padding: 0;
   width: calc(100% - 72px);
+  margin-top: 34px;
+  margin-bottom: 36px;
   display: flex;
   flex-direction: column;
-
-
 }
 
 @media screen and (max-width: 560px) {
   .popup__form {
     width: calc(100% - 44px);
-
+    margin-top: 25px;
+    margin-bottom: 25px;
   }
-
 }
