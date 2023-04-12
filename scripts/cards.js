@@ -1,32 +1,165 @@
- export const photoCards = [
-    {
-      title: "National Park, Australia",
-      image: "https://images.unsplash.com/photo-1548296404-93c7694b2f91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      // alt: "National Park, Australia",
-    },
-    {
-      title: "San Francisco, CA, USA",
-      image: "https://images.unsplash.com/photo-1677629322752-7045c2c04b5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
-      // alt: "San Francisco, CA, USA",
-    },
-    {
-      title: "New York, Brooklyn",
-      image: "https://images.unsplash.com/photo-1522083165195-3424ed129620?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1297&q=80",
-      // alt: "New York, Brooklyn",
-    },
-    {
-      title: "Toronto, Canada",
-      image: "https://images.unsplash.com/photo-1588733103629-b77afe0425ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-      // alt: "Toronto, Canada",
-    },
-    {
-      title: "Seoul, South Korea",
-      image: "https://images.unsplash.com/photo-1562829612-55b71f529a49?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
-      // alt: "Seoul, South Korea",
-    },
-    {
-      title: "Los Angeles, CA, USA",
-      image: "https://images.unsplash.com/photo-1647963945830-6c5e1c043f76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1382&q=80",
-      // alt: "Los Angeles, CA, USA",
-    },
-  ];
+  import { photoCards } from "./Data.js";
+  import { openPopup, closePopup } from "./index.js";
+
+  // export class Card {
+  //   constructor(data, templateSelector) {
+  //     this._title = data.title;
+  //     this._image = data.image;
+  //     this._alt = data.alt;
+  //     this._templateSelector = templateSelector;
+  //   }
+  
+  //   _getTemplate() {
+  //     const cardTemplate = document
+  //       .querySelector(this._templateSelector)
+  //       .content
+  //       .querySelector('.gallery__card')
+  //       .cloneNode(true);
+  
+  //     return cardTemplate;
+  //   }
+  
+  //   _setEventListeners() {
+  //     const likeButton = this._cardElement.querySelector(".gallery__button-like");
+  //     const deleteButton = this._cardElement.querySelector(".gallery__bin-button");
+  //     const cardImage = this._cardElement.querySelector(".gallery__image");
+  //     const zoomImage = document.querySelector('.popup__zoom-image');
+  //     const zoomTitle = document.querySelector('.popup__zoom-title');
+  //     const zoomPhotoPopup = document.querySelector('.popup_zoom-items');
+  //     const closeZoomButton = zoomPhotoPopup.querySelector(".popup__button-close-zoom-photo");
+      
+    
+  //     likeButton.addEventListener("click", () => {
+  //       likeButton.classList.toggle("gallery__button-like_active");
+  //     });
+  
+  //     deleteButton.addEventListener("click", () => {
+  //       this._cardElement.remove();
+  //     });
+  
+  //     cardImage.addEventListener("click", () => {
+  //       zoomImage.setAttribute("src", this._image);
+  //       zoomImage.setAttribute("alt", this._alt);
+  //       zoomTitle.textContent = this._title;
+  //       openPopup(zoomPhotoPopup);
+           
+  //     });
+
+  //     closeZoomButton.addEventListener("click", () => {
+  //       closePopup(zoomPhotoPopup);
+  //     }); 
+
+  //   }
+  
+  //   _handleLikeClick() {
+    
+  //   }
+  
+  //   _handleDeleteClick() {
+      
+  //   }
+  
+  //   _handleCardClick() {
+      
+  //   }
+  
+  //   generateCard() {
+  //     this._cardElement = this._getTemplate();
+  //     const cardImage = this._cardElement.querySelector(".gallery__image");
+  //     const cardTitle = this._cardElement.querySelector(".gallery__title");
+  
+  //     cardImage.setAttribute("src", this._image);
+  //     cardImage.setAttribute("alt", this._alt);
+  //     cardTitle.textContent = this._title;
+  
+  //     this._setEventListeners();
+  
+  //     return this._cardElement;
+  //   }
+  // }
+
+  export class Card {
+    constructor(data, templateSelector) {
+      this._title = data.title;
+      this._image = data.image;
+      this._alt = data.alt;
+      this._templateSelector = templateSelector;
+    }
+  
+    _getTemplate() {
+      const cardTemplate = document
+        .querySelector(this._templateSelector)
+        .content
+        .querySelector('.gallery__card')
+        .cloneNode(true);
+  
+      return cardTemplate;
+    }
+  
+    _setEventListeners() {
+      const likeButton = this._cardElement.querySelector(".gallery__button-like");
+      const deleteButton = this._cardElement.querySelector(".gallery__bin-button");
+      const cardImage = this._cardElement.querySelector(".gallery__image");
+      const zoomImage = document.querySelector('.popup__zoom-image');
+      const zoomTitle = document.querySelector('.popup__zoom-title');
+      const zoomPhotoPopup = document.querySelector('.popup_zoom-items');
+      const closeZoomButton = zoomPhotoPopup.querySelector(".popup__button-close-zoom-photo");
+      
+    
+      likeButton.addEventListener("click", () => {
+        likeButton.classList.toggle("gallery__button-like_active");
+      });
+  
+      deleteButton.addEventListener("click", () => {
+        this._cardElement.remove();
+      });
+  
+      cardImage.addEventListener("click", () => {
+        zoomImage.setAttribute("src", this._image);
+        zoomImage.setAttribute("alt", this._alt);
+        zoomTitle.textContent = this._title;
+        openPopup(zoomPhotoPopup);
+           
+      });
+  
+      closeZoomButton.addEventListener("click", () => {
+        closePopup(zoomPhotoPopup);
+      }); 
+  
+    }
+  
+    _handleLikeClick() {
+    
+    }
+  
+    _handleDeleteClick() {
+      
+    }
+  
+    _handleCardClick() {
+      
+    }
+  
+    generateCard() {
+      this._cardElement = this._getTemplate();
+      const cardImage = this._cardElement.querySelector(".gallery__image");
+      const cardTitle = this._cardElement.querySelector(".gallery__title");
+  
+      cardImage.setAttribute("src", this._image);
+      cardImage.setAttribute("alt", this._alt);
+      cardTitle.textContent = this._title;
+  
+      this._setEventListeners();
+  
+      return this._cardElement;
+    }
+  }
+  
+
+ export const cardsContainer = document.querySelector(".gallery");
+
+  photoCards.forEach((card) => {
+    const cardInstance = new Card(card, '#card-template');
+    const cardElement = cardInstance.generateCard();
+    cardsContainer.appendChild(cardElement);
+  });
